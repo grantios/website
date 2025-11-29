@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0 0.05rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 80px;
+            max-width: none;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 3rem 0;
+            line-height: 1;
+        }
+
+        .logo a:hover {
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #666666;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            line-height: 1;
+            padding: 0.5rem 0;
+            font-weight: bold;
+        }
+
+        nav a i {
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            color: #808080;
+        }
+
+        nav ul li:before {
+            content: none;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            color: #666666;
+            animation: pulse 16s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { color: #666666; text-shadow: none; }
+            25% { color: #666666; text-shadow: none; }
+            50% { color: #ffffff; text-shadow: 0 0 20px #ffffff; }
+            75% { color: #ffffff; text-shadow: 0 0 20px #ffffff; }
+            100% { color: #666666; text-shadow: none; }
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #666666;
+            padding-bottom: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        h3 {
+            font-size: 1.6em;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #b0b0b0;
+        }
+
+        h4 {
+            font-size: 1.3em;
+            margin-bottom: 0.8rem;
+            color: #d0d0d0;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #666666, transparent);
+            margin: 3rem 0;
+            opacity: 0.3;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 5em;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background-image: url('/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: translate(-50%, -50%);
+            transform-origin: 50% 50%;
+            animation: spin 20s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quick-links a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c2c2c;
+            color: #e0e0e0;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #404040;
+        }
+
+        .download-section {
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #2c2c2c;
+            color: #e0e0e0;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid #404040;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .download-btn.secondary {
+            background: #1a1a1a;
+            border-color: #333333;
+        }
+
+        .download-btn.primary {
+            padding: 0.5rem 2rem;
+        }
+
+        .atomic-icon {
+            font-size: 1.2em;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        details summary {
+            position: relative;
+            cursor: pointer;
+        }
+
+        details summary::marker {
+            content: "";
+        }
+
+        details summary::after {
+            content: "▼";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::after {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        details {
+            border: 1px solid #404040;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        summary {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #e0e0e0;
+            border-radius: 6px 6px 0 0;
+            transition: background-color 0.2s;
+            user-select: none;
+        }
+
+        summary:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #404040;
+            border-radius: 6px 6px 0 0;
+        }
+
+        details > div {
+            padding: 1.5rem;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        details > div h3 {
+            color: #e0e0e0;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        details > div h4 {
+            color: #b0b0b0;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        details > div code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        details > div pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            border: none;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        ul li:before {
+            content: "•";
+            color: #666666;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            margin-left: -1rem;
+        }
+
+        blockquote {
+            border-left: 4px solid #666666;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 0 4px 4px 0;
+            position: relative;
+        }
+
+        blockquote:before {
+            content: '"';
+            font-size: 3em;
+            color: #666666;
+            position: absolute;
+            left: 0.5rem;
+            top: -0.2rem;
+            opacity: 0.3;
+        }
+
+        a {
+            color: #b0b0b0;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #d0d0d0;
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+            font-size: 1.5em;
+        }
+
+        .footer-section h4 {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            font-size: 1.1em;
+        }
+
+        .footer-section p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #d0d0d0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #888888;
+            font-size: 0.9em;
+            margin: 0.5rem 0;
+        }
+
+        .footer-bottom a {
+            color: #b0b0b0;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: #d0d0d0;
+        }
+
+        .notification-bar {
+            background: #222222;
+            color: #e0e0e0;
+            padding: 10px 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .notification-bar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .notification-bar p {
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .notification-bar button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 20px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .notification-bar button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="notification-bar" class="notification-bar">
+        <div class="container">
+            <p>This is a pre-release version. Do not use for anything serious. Absolutely zero warranty or responsibility assumed by <a href="https://github.com/grantsform" target="_blank">@grantsform</a>.</p>
+            <button id="close-notification">&times;</button>
+        </div>
+    </div>
+
+    <!-- centered command intentionally left out of this content file; implemented in layout -->
+
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <a href="/">Granti<span>OS</span></a>
+            </div>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i></a></li>
+                <li><a href="https://github.com/grantsform/grantiOS" target="_blank"><i class="fab fa-github"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Granti<span style="color: #666666;">OS</span></h3>
+                    <p>Currehntly built on Debian 13 with stability and reliability.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#downloads">Downloads</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#changelog">Changelog</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/grantsform/grantiOS" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/grantsform/grantiOS/discussions" target="_blank">Discussions</a></li>
+                        <li><a href="https://github.com/grantsform/grantiOS/issues" target="_blank">Issues</a></li>
+                        <li><a href="#community">Contributing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        
+                        <li><a href="#faq">Troubleshooting</a></li>
+                        <li><a href="#community">Get Help</a></li>
+                        <li><a href="mailto:grantsform@protonmail.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Joshua Steven Grant (ie: Jost Grant)/ Built On Delusions Of Grant'eur</p>
+                <p>Licensed under Apache2. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('close-notification').addEventListener('click', function() {
+            document.getElementById('notification-bar').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
