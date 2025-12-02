@@ -1,0 +1,7 @@
+baseURL = 'https://grantios.github.io/'
+languageCode = 'en-us'
+title = 'GrantiOS'
+publishDir = "../grantios.github.io"
+
+[markup.goldmark.renderer]
+unsafe = true
