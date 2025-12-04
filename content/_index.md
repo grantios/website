@@ -40,7 +40,7 @@ Boot into the live image, then run:
 
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="initial setup commands">
-    <code>sudo pacman-key --refresh-keys && sudo pacman -Sy archlinux-keyring && sudo pacman -S just git</code>
+    <code>sudo pacman-key --refresh-keys && sudo pacman -Sy archlinux-keyring && sudo pacman -S git</code>
   </div>
 </div>
 
@@ -48,7 +48,7 @@ Boot into the live image, then run:
 
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="clone command">
-    <code>git clone https://github.com/grantios/grantios && cd grantios</code>
+    <code>git clone https://github.com/grantios/instagrant && cd instagrant</code>
   </div>
 </div>
 
@@ -57,14 +57,14 @@ To rebase to GrantiOS, choose the variant for your use case:
 **Desktop (Via KDE):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="desktop installation command">
-    <code>just desktop</code>
+    <code>./insta/run.sh</code>
   </div>
 </div>
 
 **Server (Headless):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="server installation command">
-    <code>just server</code>
+    <code>./insta/run.sh --config homeserver.sh</code>
   </div>
 </div>
 
@@ -74,14 +74,14 @@ To rebase to GrantiOS, choose the variant for your use case:
 **Smart Clock (Godot App):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="clock installation command">
-    <code>just clock</code>
+    <code>./insta/run.sh --config smartclock.sh</code>
   </div>
 </div>
 
 **Media Center (Kodi HTPC):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="media installation command">
-    <code>just media</code>
+    <code>./insta/run.sh --config mediacenter.sh</code>
   </div>
 </div>
 
