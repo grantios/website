@@ -57,7 +57,7 @@ To rebase to GrantiOS, choose the variant for your use case:
 **Desktop (Via KDE):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="desktop installation command">
-    <code>./insta/run.sh</code>
+    <code>./insta/run.sh --config workstation</code>
   </div>
 </div>
 
@@ -71,6 +71,10 @@ To rebase to GrantiOS, choose the variant for your use case:
 <details class="specialized-variants">
 <summary><strong>Specialized Variants</strong></summary>
 
+<div class="variants-grid">
+
+<div class="variant-item">
+
 **Smart Clock (Godot App):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="clock installation command">
@@ -78,11 +82,41 @@ To rebase to GrantiOS, choose the variant for your use case:
   </div>
 </div>
 
+</div>
+
+<div class="variant-item">
+
 **Media Center (Kodi HTPC):**
 <div class="command-banner-wrapper" aria-hidden="false">
   <div class="command-banner-box" role="status" aria-label="media installation command">
     <code>./insta/run.sh --config mediacenter.sh</code>
   </div>
+</div>
+
+</div>
+
+<div class="variant-item">
+
+**Steamdeck (Quickshell Heavy):**
+<div class="command-banner-wrapper" aria-hidden="false">
+  <div class="command-banner-box" role="status" aria-label="media installation command">
+    <code>./insta/run.sh --config steamdeck.sh</code>
+  </div>
+</div>
+
+</div>
+
+<div class="variant-item">
+
+**Devestation (Dev-First Desktop):**
+<div class="command-banner-wrapper" aria-hidden="false">
+  <div class="command-banner-box" role="status" aria-label="media installation command">
+    <code>./insta/run.sh --config devestation.sh</code>
+  </div>
+</div>
+
+</div>
+
 </div>
 
 </details>
